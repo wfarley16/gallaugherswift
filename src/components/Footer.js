@@ -31,17 +31,17 @@ const Footer = class extends React.Component {
                         Home
                       </Link>
                     </li>
+                    <li>
+                      <Link className="navbar-item" to="/blog">
+                        Projects
+                      </Link>
+                    </li>
                   </ul>
                 </section>
               </div>
               <div className="column is-4">
                 <section>
                   <ul className="menu-list">
-                    <li>
-                      <Link className="navbar-item" to="/blog">
-                        Projects
-                      </Link>
-                    </li>
                     <li>
                       <Link className="navbar-item" to="/contact">
                         Contact
