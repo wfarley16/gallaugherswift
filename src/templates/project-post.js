@@ -17,7 +17,7 @@ export const query = graphql`
             }`
 
 
-const Blog = (props) => {
+const Project = (props) => {
     const options  = {
         renderNode: {
             "embedded-asset-block" : (node) => {
@@ -44,7 +44,7 @@ const Blog = (props) => {
     )
 }
 
-export default Blog
+export default Project
 
 
 // import React from 'react'

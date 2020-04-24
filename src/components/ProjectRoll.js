@@ -1,7 +1,7 @@
 import React from "react";
 import { Link, graphql, useStaticQuery } from "gatsby";
 
-const BlogRoll = () => {
+const ProjectRoll = () => {
   const data = useStaticQuery(graphql`
     query {
       allContentfulBlogPost(sort: { fields: publishedDate, order: DESC }) {
@@ -11,23 +11,38 @@ const BlogRoll = () => {
             publishedDate(formatString: "MMMM Do, YYYY")
             slug
             excerpt
+            semesteryear
           }
         }
       }
     }
-  `)
+  `);
 
   return (
-    <div className="columns is-multiline">
+    <div>
+    
+        <div className="content">
+          <label >Class: </label>
+          <select name="Class">
+            <option>All</option>
+
+            {data.allContentfulBlogPost.edges.map((edge) => {
+              return <option>{edge.node.semesteryear}</option>;
+            })}
+          </select>
+        </div>
+  
+
+      <div className="columns is-multiline">
         {data.allContentfulBlogPost.edges.map((edge) => {
           return (
-            <div className= "is-parent column is-6">
+            <div className="is-parent column is-6">
               <article>
                 <header>
                   <p className="post-meta">
                     <Link
                       className="title has-text-primary is-size-4"
-                      to={`/blog/${edge.node.slug}`}
+                      to={`/projects/${edge.node.slug}`}
                     >
                       {edge.node.title}
                     </Link>
@@ -41,18 +56,19 @@ const BlogRoll = () => {
                   {edge.node.excerpt}
                   <br />
                   <br />
-                  <Link className="button" to={`/blog/${edge.node.slug}`}>
+                  <Link className="button" to={`/projects/${edge.node.slug}`}>
                     Keep Reading →
                   </Link>
                 </p>
               </article>
             </div>
-          )
+          );
         })}
+      </div>
     </div>
-  )
-}
-export default BlogRoll;
+  );
+};
+export default ProjectRoll;
 
 // class BlogRoll extends React.Component {
 //   render() {

@@ -1,10 +1,26 @@
 import React from 'react'
+import '../components/all.sass'
+import Layout from '../components/Layout'
+import ProjectRoll from '../components/ProjectRoll'
+import { Link, graphql, useStaticQuery } from "gatsby";
 
-import Layout from '../../components/Layout'
-import BlogRoll from '../../components/BlogRoll'
+const ProjectsIndexPage =() => {
+  
 
-export default class BlogIndexPage extends React.Component {
-  render() {
+
+
+      const data = useStaticQuery(graphql`
+    query{
+  allContentfulBlogPost{
+    edges{
+      node{
+        semesteryear
+      }
+    }
+    }
+  }
+  `)
+    
     return (
       <Layout>
         <div
@@ -28,11 +44,14 @@ export default class BlogIndexPage extends React.Component {
         <section className="section">
           <div className="container">
             <div className="content">
-              <BlogRoll />
+
+              <ProjectRoll />
+
             </div>
           </div>
         </section>
       </Layout>
     )
   }
-}
+
+  export default ProjectsIndexPage
