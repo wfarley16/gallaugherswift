@@ -1,31 +1,29 @@
-
-const path = require('path')
-
+const path = require('path');
 
 module.exports.createPages = async ({ actions, graphql }) => {
-  const { createPage } = actions
+  const { createPage } = actions;
 
-  const projectTemplate = path.resolve('./src/templates/project-post.js')
+  const projectTemplate = path.resolve('./src/templates/project-post.jsx');
 
   const res = await graphql(`
-          query{
-              allContentfulBlogPost{
-                  edges{
-                      node{
-                          slug
-                      }
-                  }
-              }
-          }`
-      )
+        query {
+            allContentfulBlogPost {
+                edges {
+                    node {
+                        slug
+                    }
+                }
+            }
+        }
+    `);
 
-res.data.allContentfulBlogPost.edges.forEach((edge)=> {
-  createPage ({
+  res.data.allContentfulBlogPost.edges.forEach((edge) => {
+    createPage({
       component: projectTemplate,
       path: `projects/${edge.node.slug}`,
       context: {
-          slug: edge.node.slug
-      }
-  })
-})
-}
+        slug: edge.node.slug,
+      },
+    });
+  });
+};

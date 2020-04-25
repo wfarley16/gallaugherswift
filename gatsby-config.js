@@ -2,20 +2,19 @@ module.exports = {
   siteMetadata: {
     title: 'BC iOS Swift | Gallaugher',
     description:
-      'This repo contains an example business website that is built with Gatsby, and Netlify CMS.It follows the JAMstack architecture by using Git as a single source of truth, and Netlify for continuous deployment, and CDN distribution.',
+            'This repo contains an example business website that is built with Gatsby, and Netlify CMS.It follows the JAMstack architecture by using Git as a single source of truth, and Netlify for continuous deployment, and CDN distribution.',
   },
   plugins: [
     'gatsby-plugin-react-helmet',
     'gatsby-plugin-sass',
 
     {
-      resolve: `gatsby-source-contentful`,
+      resolve: 'gatsby-source-contentful',
       options: {
         spaceId: process.env.CONTENTFUL_SPACE_ID,
         accessToken: process.env.CONTENTFUL_ACCESS_TOKEN,
       },
     },
-
 
     {
       // keep as first gatsby-source-filesystem plugin for gatsby image support
@@ -80,4 +79,4 @@ module.exports = {
     'gatsby-plugin-netlify', // make sure to keep it last in the array
     'gatsby-plugin-eslint',
   ],
-}
+};
