@@ -10,42 +10,42 @@ const Features = () => (
               <div className="has-text-centered">
                   <div
                       style={{
-                            width: '240px',
-                            display: 'inline-block',
-                    }}
+                          width: '240px',
+                          display: 'inline-block',
+                        }}
                     >
                       <img borderRadius="5px" src={MacIcon} />
                     </div>
                 </div>
                 <p>
-              A fully-charged Mac laptop to each class as we will be
-              working extensively with local development environments
+          A fully-charged Mac laptop to each class as we will be
+          working extensively with local development environments
                 </p>
             </section>
     </div>
 
-      <div className="column is-6">
-          <section className="section">
-                <div className="has-text-centered">
+        <div className="column is-6">
+      <section className="section">
+              <div className="has-text-centered">
                     <div
                   style={{
-                            width: '240px',
-                            display: 'inline-block',
+                          width: '240px',
+                          display: 'inline-block',
                         }}
                 >
                   <img borderRadius="5px" src={XcodeIcon} />
                 </div>
-            </div>
-              <p>
+                </div>
+                <p>
                     {' '}
-              Students MUST have the latest version of Apple's FREE Xcode
-              software installed. The software is available
+          Students MUST have the latest version of Apple's FREE Xcode
+          software installed. The software is available
                     <a href="https://apps.apple.com/us/app/xcode/id497799835?mt=12">
                       HERE
                     </a>
-            </p>
+        </p>
             </section>
-        </div>
+    </div>
     </div>
 );
 export default Features;
