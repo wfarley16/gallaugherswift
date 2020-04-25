@@ -26,6 +26,8 @@ const ProjectRoll = () => {
           <select name="Class">
             <option>All</option>
 
+            
+
             {data.allContentfulBlogPost.edges.map((edge) => {
               return <option>{edge.node.semesteryear}</option>;
             })}
