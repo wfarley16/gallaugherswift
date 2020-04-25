@@ -1,92 +1,102 @@
-import React from 'react';
-import { Link, graphql, useStaticQuery } from 'gatsby';
+import React from 'react'
+import { Link, graphql, useStaticQuery } from 'gatsby'
 
 class ProjectRoll extends React.Component {
-  constructor() {
-    super();
-    this.state = {
-      semesterYear: null,
-    };
-
-    this.setSemesterYear = this.setSemesterYear.bind(this);
-  }
-
-  setSemesterYear(semesterYear) {
-    this.setState({ semesterYear });
-  }
-
-  render() {
-    const data = useStaticQuery(graphql`
-    query {
-      allContentfulBlogPost(sort: { fields: publishedDate, order: DESC }) {
-        edges {
-          node {
-            title
-            publishedDate(formatString: "MMMM Do, YYYY")
-            slug
-            excerpt
-            semesteryear
-            demovid {
-              url
-            }
-          }
+    constructor() {
+        super()
+        this.state = {
+            semesterYear: null,
         }
-      }
+
+        this.setSemesterYear = this.setSemesterYear.bind(this)
     }
-  `);
 
-    const { semesterYear } = this.state;
+    setSemesterYear(semesterYear) {
+        this.setState({ semesterYear })
+    }
 
-    const allBlogPosts = data.allContentfulBlogPost.edges;
-    const filteredBlogPosts = semesterYear ? allBlogPosts.filter(post => post.semesteryear === semesterYear) : allBlogPosts;
+    render() {
+        const data = useStaticQuery(graphql`
+            query {
+                allContentfulBlogPost(
+                    sort: { fields: publishedDate, order: DESC }
+                ) {
+                    edges {
+                        node {
+                            title
+                            publishedDate(formatString: "MMMM Do, YYYY")
+                            slug
+                            excerpt
+                            semesteryear
+                        }
+                    }
+                }
+            }
+        `)
 
-    return (
-      <div>
+        const { semesterYear } = this.state
 
-        <div className="content">
-          <label>Class: </label>
-          <select name="Class">
-            <option>All</option>
-            {allBlogPosts.map((edge) => <option>{edge.node.semesteryear}</option>)}
-          </select>
-        </div>
+        const allBlogPosts = data.allContentfulBlogPost.edges
+        const filteredBlogPosts = semesterYear
+            ? allBlogPosts.filter(post => post.semesteryear === semesterYear)
+            : allBlogPosts
 
+        return (
+            <div>
+                <div className="content">
+                    <label>Class: </label>
+                    <select name="Class">
+                        <option>All</option>
+                        {allBlogPosts.map(edge => (
+                            <option
+                                onClick={() =>
+                                    this.setSemesterYear(edge.node.semesteryear)
+                                }
+                            >
+                {edge.node.semesteryear}
+                            </option>
+                        ))}
+                    </select>
+                </div>
 
-        <div className="columns is-multiline">
-          {filteredBlogPosts.map((edge) => (
-            <div className="is-parent column is-6">
-              <article>
-                <header>
-                  <p className="post-meta">
-                    <Link
-                      className="title has-text-primary is-size-4"
-                      to={`/projects/${edge.node.slug}`}
-                    >
-                      {edge.node.title}
-                    </Link>
-                    <span> &bull; </span>
-                    <span className="subtitle is-size-5 is-block">
-                    {edge.node.publishedDate}
-                  </span>
-                  </p>
-                </header>
-                <p>
-                  {edge.node.excerpt}
-                  <br/>
-                  <br/>
-                  <Link className="button" to={`/projects/${edge.node.slug}`}>
-                    Keep Reading →
-                  </Link>
-                </p>
-              </article>
+                <div className="columns is-multiline">
+                    {filteredBlogPosts.map(edge => (
+                        <div className="is-parent column is-6">
+                            <article>
+                                <header>
+                                    <p className="post-meta">
+                                        <Link
+                                            className="title has-text-primary is-size-4"
+                                            to={`/projects/${edge.node.slug}`}
+                                        >
+                                            {edge.node.title}
+                                        </Link>
+                                        <span> &bull; </span>
+                                        <span className="subtitle is-size-5 is-block">
+                                            {edge.node.publishedDate}
+                                        </span>
+                                    </p>
+                                </header>
+                                <p>
+                                    {edge.node.excerpt}
+                                    <br />
+                                    <br />
+                                    <Link
+                                        className="button"
+                                        to={`/projects/${edge.node.slug}`}
+                                    >
+                                        Keep Reading →
+                                    </Link>
+                                </p>
+                            </article>
+                        </div>
+                    ))}
+                </div>
             </div>
-          ))}
-        </div>
-      </div>
-    );
-  }
-};
-export default ProjectRoll;
+        )
+    }
+}
+export default ProjectRoll
 
 // class BlogRoll extends React.Component {
 //   render() {

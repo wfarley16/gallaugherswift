@@ -3,18 +3,17 @@ import { documentToReactComponents } from '@contentful/rich-text-react-renderer'
 import { graphql } from 'gatsby';
 import Layout from '../components/Layout';
 
-
 export const query = graphql`
-            query($slug: String!) {
-                contentfulBlogPost(slug: {eq: $slug}){
-                    title
-                    publishedDate (formatString: "MMMM Do, YYYY")
-                    body {
-                        json
-                    }
-                }
-            }`;
-
+    query($slug: String!) {
+        contentfulBlogPost(slug: { eq: $slug }) {
+            title
+            publishedDate(formatString: "MMMM Do, YYYY")
+            body {
+                json
+            }
+        }
+    }
+`;
 
 const Project = (props) => {
   const options = {
@@ -28,23 +27,27 @@ const Project = (props) => {
   };
 
   return (
-    <Layout>
+      <Layout>
       <section className="section">
-        <div className="columns">
-          <div className="column is-10 is-offset-1">
-            <p>{props.data.contentfulBlogPost.publishedDate}</p>
-            <br />
-            <h1 className="title is-size-2 has-text-weight-bold is-bold-light">{props.data.contentfulBlogPost.title}</h1>
-            {documentToReactComponents(props.data.contentfulBlogPost.body.json, options)}
-          </div>
-        </div>
-      </section>
-    </Layout>
+                <div className="columns">
+              <div className="column is-10 is-offset-1">
+                        <p>{props.data.contentfulBlogPost.publishedDate}</p>
+                      <br />
+                      <h1 className="title is-size-2 has-text-weight-bold is-bold-light">
+                            {props.data.contentfulBlogPost.title}
+                        </h1>
+                        {documentToReactComponents(
+                      props.data.contentfulBlogPost.body.json,
+                      options,
+                    )}
+                    </div>
+                </div>
+            </section>
+        </Layout>
   );
 };
 
 export default Project;
-
 
 // import React from 'react'
 // import PropTypes from 'prop-types'
