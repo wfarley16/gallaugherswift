@@ -46,48 +46,48 @@ class ProjectRoll extends React.Component {
                 <div className="content">
           <label>Class: </label>
           <select name="Class">
-                        <option>All</option>
-                    {allBlogPosts.map((edge) => (
-                            <option
-                        onClick={() => this.setSemesterYear(edge.node.semesteryear)}
-                      >
+                      <option>All</option>
+                      {allBlogPosts.map((edge) => (
+                    <option
+                              onClick={() => this.setSemesterYear(edge.node.semesteryear)}
+                            >
                                 {edge.node.semesteryear}
-                      </option>
-                        ))}
-                  </select>
+                            </option>
+                  ))}
+                    </select>
         </div>
 
             <div className="columns is-multiline">
                   {filteredBlogPosts.map((edge) => (
-                        <div className="is-parent column is-6">
-                      <article>
-                              <header>
-                                    <p className="post-meta">
-                                  <Link
-                                          className="title has-text-primary is-size-4"
-                                          to={`/projects/${edge.node.slug}`}
-                                        >
-                                            {edge.node.title}
-                                        </Link>
-                                  <span> &bull; </span>
+                <div className="is-parent column is-6">
+                            <article>
+                                <header>
+                              <p className="post-meta">
+                                        <Link
+                                  className="title has-text-primary is-size-4"
+                                            to={`/projects/${edge.node.slug}`}
+                                >
+                                  {edge.node.title}
+                                </Link>
+                                        <span> &bull; </span>
                                         <span className="subtitle is-size-5 is-block">
-                                        {edge.node.publishedDate}
-                                        </span>
-                                </p>
-                                </header>
-                                <p>
-                          {edge.node.excerpt}
-                          <br />
-                                    <br />
-                          <Link
-                                        className="button"
-                                        to={`/projects/${edge.node.slug}`}
-                                  >
+                                  {edge.node.publishedDate}
+                                </span>
+                                    </p>
+                            </header>
+                    <p>
+                                    {edge.node.excerpt}
+                                  <br />
+                                  <br />
+                                    <Link
+                                  className="button"
+                                  to={`/projects/${edge.node.slug}`}
+                                >
                                         Keep Reading →
-                                  </Link>
-                        </p>
+                                </Link>
+                                </p>
                             </article>
-                    </div>
+                        </div>
               ))}
                 </div>
           </div>

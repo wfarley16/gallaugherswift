@@ -28,20 +28,20 @@ const Project = (props) => {
 
   return (
       <Layout>
-          <section className="section">
+      <section className="section">
               <div className="columns">
-          <div className="column is-10 is-offset-1">
+                    <div className="column is-10 is-offset-1">
                         <p>{props.data.contentfulBlogPost.publishedDate}</p>
-                      <br />
-                      <h1 className="title is-size-2 has-text-weight-bold is-bold-light">
-                            {props.data.contentfulBlogPost.title}
-                </h1>
-                      {documentToReactComponents(
-                  props.data.contentfulBlogPost.body.json,
-                  options,
-                )}
-                    </div>
-        </div>
+                        <br />
+              <h1 className="title is-size-2 has-text-weight-bold is-bold-light">
+                          {props.data.contentfulBlogPost.title}
+                        </h1>
+                        {documentToReactComponents(
+                        props.data.contentfulBlogPost.body.json,
+                        options,
+                      )}
+            </div>
+                </div>
             </section>
         </Layout>
   );
