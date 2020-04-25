@@ -1,8 +1,8 @@
-import React from "react";
-import "../components/all.sass";
-import Layout from "../components/Layout";
-import { Link } from "gatsby";
-import Features from "../components/Features"
+import React from 'react';
+import '../components/all.sass';
+import { Link } from 'gatsby';
+import Layout from '../components/Layout';
+import Features from '../components/Features';
 
 export default class ProjectIndexPage extends React.Component {
   render() {
@@ -11,33 +11,33 @@ export default class ProjectIndexPage extends React.Component {
         <div
           className="full-width-image-container margin-top-0"
           style={{
-            backgroundImage: `url('/img/space-gray-iphone-8-818043.jpg')`,
-            backgroundPosition: `top left`,
-            backgroundAttachment: `fixed`,
+            backgroundImage: 'url(\'/img/space-gray-iphone-8-818043.jpg\')',
+            backgroundPosition: 'top left',
+            backgroundAttachment: 'fixed',
           }}
         >
           <div>
             <h1
               className="has-text-weight-bold is-size-1"
               style={{
-                boxShadow: "0.5rem 0 0 #f40, -0.5rem 0 0 #f40",
-                backgroundColor: "#f40",
-                color: "white",
-                padding: "1rem",
+                boxShadow: '0.5rem 0 0 #f40, -0.5rem 0 0 #f40',
+                backgroundColor: '#f40',
+                color: 'white',
+                padding: '1rem',
               }}
             >
               Swift/ iOS App Development
             </h1>
-            <br></br>
+            <br />
             <h3
               className="has-text-weight-bold is-size-5-mobile is-size-5-tablet is-size-4-widescreen"
               style={{
                 boxShadow:
-                  "rgb(241, 84, 52) 0.5rem 0px 0px, rgb(241, 84, 52) -0.5rem 0px 0px",
-                backgroundColor: "rgb(241, 84, 52)",
-                color: "white",
-                lineHeight: "1",
-                padding: "0.25em",
+                  'rgb(241, 84, 52) 0.5rem 0px 0px, rgb(241, 84, 52) -0.5rem 0px 0px',
+                backgroundColor: 'rgb(241, 84, 52)',
+                color: 'white',
+                lineHeight: '1',
+                padding: '0.25em',
               }}
             >
               From 0 to full stack in one semester!

@@ -1,8 +1,7 @@
-import React from 'react'
-import Layout from '../components/Layout'
-import  { documentToReactComponents } from '@contentful/rich-text-react-renderer'
-import {graphql} from 'gatsby'
-
+import React from 'react';
+import { documentToReactComponents } from '@contentful/rich-text-react-renderer';
+import { graphql } from 'gatsby';
+import Layout from '../components/Layout';
 
 
 export const query = graphql`
@@ -14,37 +13,37 @@ export const query = graphql`
                         json
                     }
                 }
-            }`
+            }`;
 
 
 const Project = (props) => {
-    const options  = {
-        renderNode: {
-            "embedded-asset-block" : (node) => {
-                const alt = node.data.target.fields.title['en-US']
-                const url = node.data.target.fields.file['en-US'].url
-                return <img alt={alt} src={url}/>
-            }
-        }
-    }
+  const options = {
+    renderNode: {
+      'embedded-asset-block': (node) => {
+        const alt = node.data.target.fields.title['en-US'];
+        const { url } = node.data.target.fields.file['en-US'];
+        return <img alt={alt} src={url} />;
+      },
+    },
+  };
 
-    return (
-        <Layout>
-          <section className="section">
-          <div className="columns">
+  return (
+    <Layout>
+      <section className="section">
+        <div className="columns">
           <div className="column is-10 is-offset-1">
             <p>{props.data.contentfulBlogPost.publishedDate}</p>
-            <br></br>
-              <h1 className="title is-size-2 has-text-weight-bold is-bold-light">{props.data.contentfulBlogPost.title}</h1>
+            <br />
+            <h1 className="title is-size-2 has-text-weight-bold is-bold-light">{props.data.contentfulBlogPost.title}</h1>
             {documentToReactComponents(props.data.contentfulBlogPost.body.json, options)}
-            </div>
-            </div>
-            </section>
-        </Layout>
-    )
-}
+          </div>
+        </div>
+      </section>
+    </Layout>
+  );
+};
 
-export default Project
+export default Project;
 
 
 // import React from 'react'

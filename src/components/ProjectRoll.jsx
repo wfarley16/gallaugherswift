@@ -1,5 +1,5 @@
-import React from "react";
-import { Link, graphql, useStaticQuery } from "gatsby";
+import React from 'react';
+import { Link, graphql, useStaticQuery } from 'gatsby';
 
 const ProjectRoll = () => {
   const data = useStaticQuery(graphql`
@@ -20,50 +20,46 @@ const ProjectRoll = () => {
 
   return (
     <div>
-    
-        <div className="content">
-          <label >Class: </label>
-          <select name="Class">
-            <option>All</option>
 
-            {data.allContentfulBlogPost.edges.map((edge) => {
-              return <option>{edge.node.semesteryear}</option>;
-            })}
-          </select>
-        </div>
-  
+      <div className="content">
+        <label>Class: </label>
+        <select name="Class">
+          <option>All</option>
+
+          {data.allContentfulBlogPost.edges.map((edge) => <option>{edge.node.semesteryear}</option>)}
+        </select>
+      </div>
+
 
       <div className="columns is-multiline">
-        {data.allContentfulBlogPost.edges.map((edge) => {
-          return (
-            <div className="is-parent column is-6">
-              <article>
-                <header>
-                  <p className="post-meta">
-                    <Link
-                      className="title has-text-primary is-size-4"
-                      to={`/projects/${edge.node.slug}`}
-                    >
-                      {edge.node.title}
-                    </Link>
-                    <span> &bull; </span>
-                    <span className="subtitle is-size-5 is-block">
-                      {edge.node.publishedDate}
-                    </span>
-                  </p>
-                </header>
-                <p>
-                  {edge.node.excerpt}
-                  <br />
-                  <br />
-                  <Link className="button" to={`/projects/${edge.node.slug}`}>
-                    Keep Reading →
+        {data.allContentfulBlogPost.edges.map((edge) => (
+          <div className="is-parent column is-6">
+            <article>
+              <header>
+                <p className="post-meta">
+                  <Link
+                    className="title has-text-primary is-size-4"
+                    to={`/projects/${edge.node.slug}`}
+                  >
+                    {edge.node.title}
                   </Link>
+                  <span> &bull; </span>
+                  <span className="subtitle is-size-5 is-block">
+                    {edge.node.publishedDate}
+                  </span>
                 </p>
-              </article>
-            </div>
-          );
-        })}
+              </header>
+              <p>
+                {edge.node.excerpt}
+                <br />
+                <br />
+                <Link className="button" to={`/projects/${edge.node.slug}`}>
+                  Keep Reading →
+                </Link>
+              </p>
+            </article>
+          </div>
+        ))}
       </div>
     </div>
   );
