@@ -9,6 +9,7 @@
     "env-cmd": "^10.1.0",
     "gatsby": "^2.13.31",
     "gatsby-image": "^2.0.23",
+    "gatsby-link": "^2.4.1",
     "gatsby-plugin-eslint": "^2.0.8",
     "gatsby-plugin-netlify": "^2.0.6",
     "gatsby-plugin-netlify-cms": "^4.1.6",
@@ -46,7 +47,10 @@
     "build": "npm run clean && gatsby build",
     "develop": "GATSBY_GRAPHQL_IDE=playground env-cmd -f .env.development gatsby develop",
     "test": "echo \"Error: no test specified\" && exit 1",
-    "lint": "eslint src/**/*.jsx --fix"
+    "prettier": "prettier src/**/*.jsx",
+    "prettier:write": "prettier src/**/*.jsx --write",
+    "lint": "eslint src/**/*.jsx",
+    "lint:fix": "eslint src/**/*.jsx --fix"
   },
   "devDependencies": {
     "babel-eslint": "^10.1.0",
