@@ -11,13 +11,15 @@ const ProjectsIndexPage = () => {
         edges {
           node {
             semesteryear
+            title
+            publishedDate(formatString: "MMMM Do, YYYY")
+            slug
+            excerpt
           }
         }
       }
     }
   `);
-
-  console.log(data);
 
   return (
     <Layout>
@@ -42,7 +44,7 @@ const ProjectsIndexPage = () => {
       <section className="section">
         <div className="container">
           <div className="content">
-            <ProjectRoll />
+            <ProjectRoll data={data} />
           </div>
         </div>
       </section>
