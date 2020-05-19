@@ -2,12 +2,11 @@ module.exports = {
   siteMetadata: {
     title: 'BC iOS Swift | Gallaugher',
     description:
-            'This repo contains an example business website that is built with Gatsby, and Netlify CMS.It follows the JAMstack architecture by using Git as a single source of truth, and Netlify for continuous deployment, and CDN distribution.',
+        `This website displays the work of students in Professor Gallaugher's Swift Class at Boston College`,
   },
   plugins: [
     'gatsby-plugin-react-helmet',
     'gatsby-plugin-sass',
-
     {
       resolve: 'gatsby-source-contentful',
       options: {
@@ -15,7 +14,6 @@ module.exports = {
         accessToken: process.env.CONTENTFUL_ACCESS_TOKEN,
       },
     },
-
     {
       // keep as first gatsby-source-filesystem plugin for gatsby image support
       resolve: 'gatsby-source-filesystem',
@@ -68,7 +66,6 @@ module.exports = {
         ],
       },
     },
-
     {
       resolve: 'gatsby-plugin-purgecss', // purges all unused/unreferenced css rules
       options: {
@@ -76,7 +73,15 @@ module.exports = {
         purgeOnly: ['/all.sass'], // applies purging only on the bulma css file
       },
     }, // must be after other CSS plugins
-    'gatsby-plugin-netlify', // make sure to keep it last in the array
     'gatsby-plugin-eslint',
+    {
+      resolve: `gatsby-plugin-s3`,
+      options: {
+        bucketName: "gallaugherswift",
+        protocol: "https",
+        hostname: "www.bostoncollegeswift.com",
+      },
+    },
+    'gatsby-plugin-netlify', // make sure to keep it last in the array
   ],
 };

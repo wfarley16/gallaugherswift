@@ -7,7 +7,7 @@ module.exports.createPages = async ({ actions, graphql }) => {
 
   const res = await graphql(`
         query {
-            allContentfulBlogPost {
+            allContentfulStudentPost {
                 edges {
                     node {
                         slug
@@ -17,7 +17,7 @@ module.exports.createPages = async ({ actions, graphql }) => {
         }
     `);
 
-  res.data.allContentfulBlogPost.edges.forEach((edge) => {
+  res.data.allContentfulStudentPost.edges.forEach((edge) => {
     createPage({
       component: projectTemplate,
       path: `projects/${edge.node.slug}`,

@@ -1,20 +1,26 @@
 import React from 'react';
+import { useStaticQuery, graphql } from 'gatsby';
 import '../components/all.sass';
-import { graphql, useStaticQuery } from 'gatsby';
 import Layout from '../components/Layout';
 import ProjectRoll from '../components/ProjectRoll';
 
 const ProjectsIndexPage = () => {
   const data = useStaticQuery(graphql`
     query {
-      allContentfulBlogPost {
+      allContentfulStudentPost {
         edges {
           node {
-            semesteryear
-            title
-            publishedDate(formatString: "MMMM Do, YYYY")
+            firstName
+            lastName
+            semester
+            profilePicture
+            classYear
+            linkedInUrl
+            programmingExperience
+            employmentStatus
+            resumeUrl
+            demoVideo
             slug
-            excerpt
           }
         }
       }

@@ -1,48 +1,31 @@
 import React from 'react';
-import { documentToReactComponents } from '@contentful/rich-text-react-renderer';
-import { graphql } from 'gatsby';
 import Layout from '../components/Layout';
 
 export const query = graphql`
   query($slug: String!) {
-    contentfulBlogPost(slug: { eq: $slug }) {
-      title
-      publishedDate(formatString: "MMMM Do, YYYY")
-      body {
-        json
-      }
+    contentfulStudentPost(slug: { eq: $slug }) {
+      firstName
+      lastName
+      classYear
     }
   }
 `;
 
-const Project = props => {
-  const options = {
-    renderNode: {
-      'embedded-asset-block': node => {
-        const alt = node.data.target.fields.title['en-US'];
-        const { url } = node.data.target.fields.file['en-US'];
-        return <img alt={alt} src={url} />;
-      },
-    },
-  };
-
-  return (
-    <Layout>
-      <section className="section">
-        <div className="columns">
-          <div className="column is-10 is-offset-1">
-            <p>{props.data.contentfulBlogPost.publishedDate}</p>
-            <br />
-            <h1 className="title is-size-2 has-text-weight-bold is-bold-light">
-              {props.data.contentfulBlogPost.title}
-            </h1>
-            {documentToReactComponents(props.data.contentfulBlogPost.body.json, options)}
-          </div>
+const Project = props => (
+  <Layout>
+    <section className="section">
+      <div className="columns">
+        <div className="column is-10 is-offset-1">
+          <p>{`${props.data.contentfulStudentPost.firstName} ${props.data.contentfulStudentPost.lastName}`}</p>
+          <br />
+          <h1 className="title is-size-2 has-text-weight-bold is-bold-light">
+            {`Class of ${props.data.contentfulStudentPost.classYear}`}
+          </h1>
         </div>
-      </section>
-    </Layout>
-  );
-};
+      </div>
+    </section>
+  </Layout>
+);
 
 export default Project;
 

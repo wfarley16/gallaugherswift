@@ -15,12 +15,10 @@ class Navbar extends React.Component {
   toggleHamburger = () => {
     const { active } = this.state;
     // toggle the active boolean in the state
-    this.setState(
-      {
-        active: !active,
-        navBarActiveClass: active ? 'is-active' : '',
-      },
-    );
+    this.setState({
+      active: !active,
+      navBarActiveClass: active ? 'is-active' : '',
+    });
   };
 
   render() {

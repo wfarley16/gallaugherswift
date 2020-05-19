@@ -15,23 +15,39 @@ class ProjectRoll extends React.Component {
     this.setState({ semesterYear });
   }
 
+  getSemesters() {
+    const { data } = this.props;
+    const semesters = [];
+    data.allContentfulStudentPost.edges.forEach(edge => {
+      const { semester } = edge.node;
+      if (!semesters.includes(semester)) {
+        semesters.push(semester);
+      }
+    });
+    return semesters;
+  }
+
   render() {
     const { data } = this.props;
     const { semesterYear } = this.state;
 
-    const allBlogPosts = data.allContentfulBlogPost.edges;
+    const allBlogPosts = data.allContentfulStudentPost.edges;
     const filteredBlogPosts = semesterYear
-      ? allBlogPosts.filter(edge => edge.node.semesteryear === semesterYear)
+      ? allBlogPosts.filter(edge => edge.node.semester === semesterYear)
       : allBlogPosts;
+
+    const semesters = this.getSemesters();
 
     return (
       <div>
         <div className="content">
           <p>Class: </p>
-          <button type="button" onClick={() => this.setSemesterYear(null)}>All</button>
-          {allBlogPosts.map(edge => (
-            <button onClick={() => this.setSemesterYear(edge.node.semesteryear)} type="button">
-              {edge.node.semesteryear}
+          <button type="button" onClick={() => this.setSemesterYear(null)}>
+            All
+          </button>
+          {semesters.map(semester => (
+            <button onClick={() => this.setSemesterYear(semester)} type="button">
+              {semester}
             </button>
           ))}
         </div>
@@ -46,15 +62,13 @@ class ProjectRoll extends React.Component {
                       className="title has-text-primary is-size-4"
                       to={`/projects/${edge.node.slug}`}
                     >
-                      {edge.node.title}
+                      {`${edge.node.firstName} ${edge.node.lastName}`}
                     </Link>
                     <span> &bull; </span>
-                    <span className="subtitle is-size-5 is-block">{edge.node.publishedDate}</span>
                   </p>
                 </header>
                 <p>
-                  {edge.node.excerpt}
-                  <br />
+                  {`Class of ${edge.node.classYear}`}
                   <br />
                   <Link className="button" to={`/projects/${edge.node.slug}`}>
                     Keep Reading →
