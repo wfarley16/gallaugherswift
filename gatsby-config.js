@@ -1,3 +1,5 @@
+require("dotenv").config();
+
 module.exports = {
   siteMetadata: {
     title: 'BC iOS Swift | Gallaugher',
@@ -77,9 +79,9 @@ module.exports = {
     {
       resolve: `gatsby-plugin-s3`,
       options: {
-        bucketName: "gallaugherswift",
+        bucketName: process.env.S3_BUCKET_NAME,
         protocol: "https",
-        hostname: "www.bostoncollegeswift.com",
+        hostname: process.env.HOST_NAME,
       },
     },
     'gatsby-plugin-netlify', // make sure to keep it last in the array

@@ -6,6 +6,7 @@
   "dependencies": {
     "@contentful/rich-text-react-renderer": "^13.4.0",
     "bulma": "^0.8.0",
+    "dotenv": "^8.2.0",
     "env-cmd": "^10.1.0",
     "gatsby": "^2.13.31",
     "gatsby-image": "^2.0.23",
@@ -48,7 +49,7 @@
     "build": "npm run clean && gatsby build",
     "develop": "GATSBY_GRAPHQL_IDE=playground env-cmd -f .env.development gatsby develop",
     "test": "echo \"Error: no test specified\" && exit 1",
-    "deploy": "npm run build && gatsby-plugin-s3 deploy",
+    "deploy": "npm run build && npx -n \"-r dotenv/config\" gatsby-plugin-s3 deploy",
     "prettier": "prettier src/**/*.jsx",
     "prettier:write": "prettier src/**/*.jsx --write",
     "lint": "eslint src/**/*.jsx",
