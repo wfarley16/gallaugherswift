@@ -17,8 +17,8 @@ const Project = props => {
 
           <br />
 
-          <p>{post.programmingExperience}</p>
-          <p>{post.employmentStatus}</p>
+          <p>{`Programming Experience: ${post.programmingExperience}`}</p>
+          <p>{`Employment Status: ${post.employmentStatus}`}</p>
 
           <br />
 
