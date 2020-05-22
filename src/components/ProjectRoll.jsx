@@ -1,5 +1,4 @@
 import React from 'react';
-import { Link } from 'gatsby';
 
 class ProjectRoll extends React.Component {
   constructor() {
@@ -28,7 +27,7 @@ class ProjectRoll extends React.Component {
   }
 
   render() {
-    const { data } = this.props;
+    const { data, onSelect } = this.props;
     const { semesterYear } = this.state;
 
     const allBlogPosts = data.allContentfulStudentPost.edges;
@@ -57,7 +56,7 @@ class ProjectRoll extends React.Component {
         <div className="columns is-multiline">
           {filteredBlogPosts.map(edge => (
             <div className="is-parent column is-6">
-              <Link to={`/projects/${edge.node.slug}`}>
+              <button className="post-wrapper-button" type="button" onClick={() => onSelect(edge.node)}>
                 <article className="post-preview">
                   <header>
                     <p className="post-meta title has-text-primary is-size-4">
@@ -67,13 +66,15 @@ class ProjectRoll extends React.Component {
                   </header>
                   <p>
                     {`Class of ${edge.node.classYear}`}
-                    <br />
-                    <Link className="button" to={`/projects/${edge.node.slug}`}>
-                      Keep Reading →
-                    </Link>
                   </p>
+
+                  <br />
+
+                  <button type="button">
+                    Learn about me and my app →
+                  </button>
                 </article>
-              </Link>
+              </button>
             </div>
           ))}
         </div>
