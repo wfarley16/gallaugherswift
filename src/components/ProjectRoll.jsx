@@ -35,6 +35,8 @@ class ProjectRoll extends React.Component {
     const filteredBlogPosts = semesterYear
       ? allBlogPosts.filter(edge => edge.node.semester === semesterYear)
       : allBlogPosts;
+    filteredBlogPosts
+        .sort((edgeA, edgeB) => (edgeA.node.firstName > edgeB.node.firstName ? 1 : -1));
 
     const semesters = this.getSemesters();
 
@@ -55,26 +57,23 @@ class ProjectRoll extends React.Component {
         <div className="columns is-multiline">
           {filteredBlogPosts.map(edge => (
             <div className="is-parent column is-6">
-              <article>
-                <header>
-                  <p className="post-meta">
-                    <Link
-                      className="title has-text-primary is-size-4"
-                      to={`/projects/${edge.node.slug}`}
-                    >
+              <Link to={`/projects/${edge.node.slug}`}>
+                <article className="post-preview">
+                  <header>
+                    <p className="post-meta title has-text-primary is-size-4">
                       {`${edge.node.firstName} ${edge.node.lastName}`}
+                      <span> &bull; </span>
+                    </p>
+                  </header>
+                  <p>
+                    {`Class of ${edge.node.classYear}`}
+                    <br />
+                    <Link className="button" to={`/projects/${edge.node.slug}`}>
+                      Keep Reading →
                     </Link>
-                    <span> &bull; </span>
                   </p>
-                </header>
-                <p>
-                  {`Class of ${edge.node.classYear}`}
-                  <br />
-                  <Link className="button" to={`/projects/${edge.node.slug}`}>
-                    Keep Reading →
-                  </Link>
-                </p>
-              </article>
+                </article>
+              </Link>
             </div>
           ))}
         </div>
