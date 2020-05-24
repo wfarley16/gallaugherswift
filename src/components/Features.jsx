@@ -39,6 +39,7 @@ const Features = () => (
           {' '}
           Students MUST have the latest version of Apple's FREE Xcode software installed. The
           software is available
+          {' '}
           <a href="https://apps.apple.com/us/app/xcode/id497799835?mt=12">HERE</a>
         </p>
       </section>
