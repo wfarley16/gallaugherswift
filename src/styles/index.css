@@ -1,0 +1,14 @@
+.hero-image {
+  background-image: url('../img/iphone.jpeg');
+  background-position: top left;
+  background-attachment: fixed;
+}
+
+.center-text {
+  text-align: center;
+}
+
+.grid-item-image {
+  border-radius: 5px;
+  margin: 0 auto;
+}

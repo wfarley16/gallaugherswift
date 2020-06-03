@@ -1,40 +1,27 @@
 import React from 'react';
+
+import { Grid } from 'semantic-ui-react';
 import MacIcon from '../../static/img/macbook-icon.png';
 import XcodeIcon from '../../static/img/icons8-xcode-250.png';
 
 const Features = () => (
-  <div className="columns is-multiline">
-    <div className="column is-6">
-      <section className="section">
-        <div className="has-text-centered">
-          <div
-            style={{
-              width: '240px',
-              display: 'inline-block',
-            }}
-          >
-            <img style={{ borderRadius: '5px' }} src={MacIcon} alt="mac-icon" />
-          </div>
-        </div>
+  <Grid.Row columns={2} divided stackable="true">
+    <Grid.Column className="center-text">
+      <div className="center-text">
+        <img className="grid-item-image" src={MacIcon} alt="mac-icon" />
+      </div>
+      <div className="center-text">
         <p>
           A fully-charged Mac laptop to each class as we will be working extensively with local
           development environments
         </p>
-      </section>
-    </div>
-
-    <div className="column is-6">
-      <section className="section">
-        <div className="has-text-centered">
-          <div
-            style={{
-              width: '240px',
-              display: 'inline-block',
-            }}
-          >
-            <img style={{ borderRadius: '5px' }} src={XcodeIcon} alt="xcode-icon" />
-          </div>
-        </div>
+      </div>
+    </Grid.Column>
+    <Grid.Column>
+      <div className="center-text">
+        <img className="grid-item-image" src={XcodeIcon} alt="xcode-icon" />
+      </div>
+      <div className="center-text">
         <p>
           {' '}
           Students MUST have the latest version of Apple's FREE Xcode software installed. The
@@ -42,8 +29,9 @@ const Features = () => (
           {' '}
           <a href="https://apps.apple.com/us/app/xcode/id497799835?mt=12">HERE</a>
         </p>
-      </section>
-    </div>
-  </div>
+      </div>
+    </Grid.Column>
+  </Grid.Row>
 );
+
 export default Features;

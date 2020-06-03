@@ -4,7 +4,7 @@ import { withPrefix } from 'gatsby';
 
 import Footer from './Footer';
 import Navbar from './Navbar';
-import './all.sass';
+// import './all.sass';
 import useSiteMetadata from './SiteMetadata';
 
 const TemplateWrapper = ({ children }) => {
@@ -42,7 +42,7 @@ const TemplateWrapper = ({ children }) => {
         <meta property="og:image" content={`${withPrefix('/')}img/og-image.jpg`} />
       </Helmet>
       <Navbar />
-      <div>{children}</div>
+      <div className="page">{children}</div>
       <Footer />
     </div>
   );

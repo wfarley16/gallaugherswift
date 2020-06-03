@@ -1,18 +1,16 @@
 import React from 'react';
-import '../components/all.sass';
+
+import { Grid } from 'semantic-ui-react';
 import { Link } from 'gatsby';
 import Layout from '../components/Layout';
 import Features from '../components/Features';
 
+import '../styles/index.css';
+
 export default () => (
   <Layout>
     <div
-      className="full-width-image-container margin-top-0"
-      style={{
-        backgroundImage: "url('/img/space-gray-iphone-8-818043.jpg')",
-        backgroundPosition: 'top left',
-        backgroundAttachment: 'fixed',
-      }}
+      className="full-width-image-container margin-top-0 hero-image"
     >
       <div>
         <h1
@@ -42,57 +40,22 @@ export default () => (
       </div>
     </div>
 
-    <section className="section section--gradient">
-      <div className="container">
-        <div className="section">
-          <div className="columns">
-            <div className="column is-10 is-offset-1">
-              <div className="content">
-                <div className="content">
-                  <div className="tile">
-                    <h1 className="title">Overview</h1>
-                  </div>
-                  <div className="tile">
-                    <h3 className="subtitle">
-                      In this fast-paced course, students will learn the Swift programming language
-                      and iOS app development skills. While this course is rigorous, challenging,
-                      and covers a broad set of topics at a rapid pace, the course assumes NO prior
-                      programming experience.
-                    </h3>
-                  </div>
-                </div>
-                <div className="columns">
-                  <div className="column is-12">
-                    <h3 className="has-text-weight-semibold is-size-2">The Course</h3>
-                    <p>
-                      Using a "flipped-classroom" approach, students take lectures in a series of
-                      online videos embedded in a web-based course/reference/quiz book, following
-                      along with videos as they learn programming concepts and build apps. Although
-                      this is a flipped class, expect a challenging course. Class is mandatory (this
-                      is NOT an online course) and class time will be used for additional exercises,
-                      concept review, and student questions.Students should be prepared to spend
-                      significant time each week on self-directed learning and regular programming
-                      projects. This course can be used in place of ISYS 2157 Programming for
-                      Management for credit toward the Information Systems concentration. Make sure
-                      to bring the following:
-                    </p>
-                  </div>
-                </div>
-
-                <Features />
-
-                <div className="columns">
-                  <div className="column is-12 has-text-centered">
-                    <Link className="btn" to="/projects">
-                      See all student projects
-                    </Link>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-    </section>
+    <Grid centered>
+      <Grid.Row centered className="center-text">
+        <h1 className="title">Overview</h1>
+        <h3 className="subtitle">
+          In this fast-paced course, students will learn the Swift programming language
+          and iOS app development skills. While this course is rigorous, challenging,
+          and covers a broad set of topics at a rapid pace, the course assumes NO prior
+          programming experience.
+        </h3>
+      </Grid.Row>
+      <Features />
+      <Grid.Row centered className="center-text">
+        <Link className="btn" to="/projects">
+          See all student projects
+        </Link>
+      </Grid.Row>
+    </Grid>
   </Layout>
 );
