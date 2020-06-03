@@ -57,7 +57,10 @@ class ProjectsIndexPage extends React.Component {
         <section className="section">
           <div className="container">
             <div className="content">
-              <ProjectRoll data={data} onSelect={post => this.selectPost(post)} />
+              <ProjectRoll
+                data={data}
+                onSelect={post => this.selectPost(post)}
+              />
             </div>
           </div>
         </section>
