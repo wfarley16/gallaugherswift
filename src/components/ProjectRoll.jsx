@@ -5,10 +5,19 @@ class ProjectRoll extends React.Component {
     super();
     this.state = {
       semesterYear: null,
+      start: 0,
+      stop: 5,
     };
 
     this.setSemesterYear = this.setSemesterYear.bind(this);
   }
+
+  // increment should be +1 or -1
+  // setRange(increment) {
+    // get the current start and stop from state
+
+    // get the total number of posts
+  // }
 
   setSemesterYear(semesterYear) {
     this.setState({ semesterYear });
@@ -26,8 +35,8 @@ class ProjectRoll extends React.Component {
     return semesters;
   }
 
-  render() {
-    const { data, onSelect } = this.props;
+  getFilteredBlogPosts() {
+    const { data } = this.props;
     const { semesterYear } = this.state;
 
     const allBlogPosts = data.allContentfulStudentPost.edges;
@@ -35,8 +44,15 @@ class ProjectRoll extends React.Component {
       ? allBlogPosts.filter(edge => edge.node.semester === semesterYear)
       : allBlogPosts;
     filteredBlogPosts
-        .sort((edgeA, edgeB) => (edgeA.node.firstName > edgeB.node.firstName ? 1 : -1));
+      .sort((edgeA, edgeB) => (edgeA.node.firstName > edgeB.node.firstName ? 1 : -1));
 
+    return filteredBlogPosts;
+  }
+
+  render() {
+    const { onSelect } = this.props;
+
+    const filteredBlogPosts = this.getFilteredBlogPosts();
     const semesters = this.getSemesters();
 
     return (
