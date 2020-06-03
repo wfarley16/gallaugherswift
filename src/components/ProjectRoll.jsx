@@ -13,11 +13,19 @@ class ProjectRoll extends React.Component {
   }
 
   // increment should be +1 or -1
-  // setRange(increment) {
+  setRange(increment) {
+    // this just avoids the linter error so things run right now
+    console.log(increment);
+
     // get the current start and stop from state
 
-    // get the total number of posts
-  // }
+    // get the total number of posts that fit the current semester
+
+    // set the new start and stop, keeping in mind the total number of posts
+
+    // set new state values
+
+  }
 
   setSemesterYear(semesterYear) {
     this.setState({ semesterYear });
